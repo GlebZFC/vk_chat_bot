@@ -120,7 +120,7 @@
 	}
 
 	function female($name){
-		if(substr($name, strlen($res)-2, strlen($res)-1) == "а" || substr($name, strlen($res)-2, strlen($res)-1) == "я"){
+		if(substr($name, strlen($res)-2, strlen($res)-1) == "Р°" || substr($name, strlen($res)-2, strlen($res)-1) == "СЏ"){
 			return 1;
 		}
 		return 0;
@@ -136,30 +136,30 @@
 		$w4 = get_item();
 		
 		if(female($w1) == $YES){
-			if(substr($w3, strlen($w3)-3, 2) == "ть")
-				$w3 = substr($w3, 0, (strlen($w3)-3))."ла";
-			else if(substr($w3, (strlen($w3)-5), 4) == "ться")
-				$w3 = substr($w3, 0, (strlen($w3)-5))."ла";
+			if(substr($w3, strlen($w3)-3, 2) == "С‚СЊ")
+				$w3 = substr($w3, 0, (strlen($w3)-3))."Р»Р°";
+			else if(substr($w3, (strlen($w3)-5), 4) == "С‚СЊСЃСЏ")
+				$w3 = substr($w3, 0, (strlen($w3)-5))."Р»Р°";
 		}
 		else{
-			if(substr($w3, strlen($w3)-3, 2) == "ть")
-				$w3 = substr($w3, 0, (strlen($w3)-3))."л";
-			else if(substr($w3, (strlen($w3)-5), 4) == "ться")
-				$w3 = substr($w3, 0, (strlen($w3)-5))."л";
+			if(substr($w3, strlen($w3)-3, 2) == "С‚СЊ")
+				$w3 = substr($w3, 0, (strlen($w3)-3))."Р»";
+			else if(substr($w3, (strlen($w3)-5), 4) == "С‚СЊСЃСЏ")
+				$w3 = substr($w3, 0, (strlen($w3)-5))."Р»";
 		}
 		
-		if(substr($w4, strlen($w4)-2, 1) == "с")
-			$w4 = substr($w4, 0, (strlen($w4)-2))."л";
-		else if(substr($w4, strlen($w4)-2, 1) == "а")
-			$w4 = substr($w4, 0, (strlen($w4)-2))."у";
-		else if(substr($w4, strlen($w4)-2, 1) == "й")
-			$w4 = substr($w4, 0, (strlen($w4)-2))."я";
-		else if(substr($w4, strlen($w4)-2, 1) == "я")
-			$w4 = substr($w4, 0, (strlen($w4)-2))."ю";
-		else if(substr($w4, strlen($w4)-2, 1) == "ь")
-			$w4 = substr($w4, 0, (strlen($w4)-2))."я";
-		else if(substr($w4, strlen($w4)-2, 1) == "т" || substr($w4, strlen($w4)-2, 1) == "н")
-			$w4 = substr($w4, 0, (strlen($w4)-1))."а";
+		if(substr($w4, strlen($w4)-2, 1) == "СЃ")
+			$w4 = substr($w4, 0, (strlen($w4)-2))."Р»";
+		else if(substr($w4, strlen($w4)-2, 1) == "Р°")
+			$w4 = substr($w4, 0, (strlen($w4)-2))."Сѓ";
+		else if(substr($w4, strlen($w4)-2, 1) == "Р№")
+			$w4 = substr($w4, 0, (strlen($w4)-2))."СЏ";
+		else if(substr($w4, strlen($w4)-2, 1) == "СЏ")
+			$w4 = substr($w4, 0, (strlen($w4)-2))."СЋ";
+		else if(substr($w4, strlen($w4)-2, 1) == "СЊ")
+			$w4 = substr($w4, 0, (strlen($w4)-2))."СЏ";
+		else if(substr($w4, strlen($w4)-2, 1) == "С‚" || substr($w4, strlen($w4)-2, 1) == "РЅ")
+			$w4 = substr($w4, 0, (strlen($w4)-1))."Р°";
 			
 		return $w1." ".$w2." ".$w3." ".$w4;
 	}
@@ -168,71 +168,71 @@
 		return; 
 	} 
 	
-	//Строка для подтверждения адреса сервера из настроек Callback API 
+	//РЎС‚СЂРѕРєР° РґР»СЏ РїРѕРґС‚РІРµСЂР¶РґРµРЅРёСЏ Р°РґСЂРµСЃР° СЃРµСЂРІРµСЂР° РёР· РЅР°СЃС‚СЂРѕРµРє Callback API 
 	$confirmation_token = ''; 
 	
-	//Ключ доступа сообщества 
+	//РљР»СЋС‡ РґРѕСЃС‚СѓРїР° СЃРѕРѕР±С‰РµСЃС‚РІР° 
 	$token = ''; 
 	
-	//Получаем и декодируем уведомление 
+	//РџРѕР»СѓС‡Р°РµРј Рё РґРµРєРѕРґРёСЂСѓРµРј СѓРІРµРґРѕРјР»РµРЅРёРµ 
 	$data = json_decode(file_get_contents('php://input')); 
 	
-	//Проверяем, что находится в поле "type" 
+	//РџСЂРѕРІРµСЂСЏРµРј, С‡С‚Рѕ РЅР°С…РѕРґРёС‚СЃСЏ РІ РїРѕР»Рµ "type" 
 	switch ($data->type) { 
-		//Если это уведомление для подтверждения адреса сервера... 
+		//Р•СЃР»Рё СЌС‚Рѕ СѓРІРµРґРѕРјР»РµРЅРёРµ РґР»СЏ РїРѕРґС‚РІРµСЂР¶РґРµРЅРёСЏ Р°РґСЂРµСЃР° СЃРµСЂРІРµСЂР°... 
 		case 'confirmation': 
-			//...отправляем строку для подтверждения адреса 
+			//...РѕС‚РїСЂР°РІР»СЏРµРј СЃС‚СЂРѕРєСѓ РґР»СЏ РїРѕРґС‚РІРµСЂР¶РґРµРЅРёСЏ Р°РґСЂРµСЃР° 
 			echo $confirmation_token; 
 			break; 
 		
-		//Вступление в группу
+		//Р’СЃС‚СѓРїР»РµРЅРёРµ РІ РіСЂСѓРїРїСѓ
 		case 'group_join': 
 
-			//...получаем id его автора 
+			//...РїРѕР»СѓС‡Р°РµРј id РµРіРѕ Р°РІС‚РѕСЂР° 
 			$user_id = $data->object->user_id; 
-			//затем с помощью users.get получаем данные об авторе 
+			//Р·Р°С‚РµРј СЃ РїРѕРјРѕС‰СЊСЋ users.get РїРѕР»СѓС‡Р°РµРј РґР°РЅРЅС‹Рµ РѕР± Р°РІС‚РѕСЂРµ 
 			$user_info = json_decode(file_get_contents("https://api.vk.com/method/users.get?user_ids={$user_id}&v=5.0")); 
 			
-			//и извлекаем из ответа его имя 
+			//Рё РёР·РІР»РµРєР°РµРј РёР· РѕС‚РІРµС‚Р° РµРіРѕ РёРјСЏ 
 			$user_name = $user_info->response[0]->first_name." ".$user_info->response[0]->last_name; 
 			
-			//С помощью messages.send и токена сообщества отпр сообщение 
+			//РЎ РїРѕРјРѕС‰СЊСЋ messages.send Рё С‚РѕРєРµРЅР° СЃРѕРѕР±С‰РµСЃС‚РІР° РѕС‚РїСЂ СЃРѕРѕР±С‰РµРЅРёРµ 
 			$request_params = array( 
-				'message' => iconv("windows-1251", "utf-8", "Новый участник в группе X: ").$user_name, 
+				'message' => iconv("windows-1251", "utf-8", "РќРѕРІС‹Р№ СѓС‡Р°СЃС‚РЅРёРє РІ РіСЂСѓРїРїРµ X: ").$user_name, 
 				'domain' => "your_id",
 				'access_token' => $token, 
 				'v' => '5.0' 
 			); 
 			
-			//Сформировать сообщение
+			//РЎС„РѕСЂРјРёСЂРѕРІР°С‚СЊ СЃРѕРѕР±С‰РµРЅРёРµ
 			$get_params = http_build_query($request_params); 
 			
-			//Отправить VK message
+			//РћС‚РїСЂР°РІРёС‚СЊ VK message
 			$r = file_get_contents('https://api.vk.com/method/messages.send?'. $get_params); 
 			
-			//Отправить E-Mail
+			//РћС‚РїСЂР°РІРёС‚СЊ E-Mail
 			$mail_header = "Content-Type: text/html; charset=UTF-8";
-			$mail_subj = iconv("windows-1251", "utf-8", "Новичек в X");
+			$mail_subj = iconv("windows-1251", "utf-8", "РќРѕРІРёС‡РµРє РІ X");
 			$mail_body = $user_name;
 			mail('your_mail@domain', $mail_subj, $mail_body, $mail_header);
 			
-			//Возвращаем "ok" серверу Callback API 
+			//Р’РѕР·РІСЂР°С‰Р°РµРј "ok" СЃРµСЂРІРµСЂСѓ Callback API 
 			echo('ok'); 
 			
 			break; 
-		//Сообщение в группу
+		//РЎРѕРѕР±С‰РµРЅРёРµ РІ РіСЂСѓРїРїСѓ
 		case 'message_new': 
-			//...получаем id его автора 
+			//...РїРѕР»СѓС‡Р°РµРј id РµРіРѕ Р°РІС‚РѕСЂР° 
 			$user_id = $data->object->user_id; 
-			//затем с помощью users.get получаем данные об авторе 
+			//Р·Р°С‚РµРј СЃ РїРѕРјРѕС‰СЊСЋ users.get РїРѕР»СѓС‡Р°РµРј РґР°РЅРЅС‹Рµ РѕР± Р°РІС‚РѕСЂРµ 
 			$user_info = json_decode(file_get_contents("https://api.vk.com/method/users.get?user_ids={$user_id}&v=5.0")); 
 			
-			//и извлекаем из ответа его имя 
+			//Рё РёР·РІР»РµРєР°РµРј РёР· РѕС‚РІРµС‚Р° РµРіРѕ РёРјСЏ 
 			$user_name = $user_info->response[0]->first_name." ".$user_info->response[0]->last_name; 
 			
 			$sentence = make_sentence();
 			
-			//С помощью messages.send и токена сообщества отпр сообщение 
+			//РЎ РїРѕРјРѕС‰СЊСЋ messages.send Рё С‚РѕРєРµРЅР° СЃРѕРѕР±С‰РµСЃС‚РІР° РѕС‚РїСЂ СЃРѕРѕР±С‰РµРЅРёРµ 
 			$request_params = array( 
 				'message' => iconv('windows-1251', 'utf-8', $sentence), 
 				'user_id' => $user_id, 
@@ -240,81 +240,81 @@
 				'v' => '5.0' 
 			); 			
 			
-			//Сформировать сообщение
+			//РЎС„РѕСЂРјРёСЂРѕРІР°С‚СЊ СЃРѕРѕР±С‰РµРЅРёРµ
 			$get_params = http_build_query($request_params); 
 			
-			//Отправить VK message
+			//РћС‚РїСЂР°РІРёС‚СЊ VK message
 			$r = file_get_contents('https://api.vk.com/method/messages.send?'. $get_params); 
 			
-			//Отправить E-Mail
+			//РћС‚РїСЂР°РІРёС‚СЊ E-Mail
 			$mail_header = "Content-Type: text/html; charset=UTF-8";
 			$mail_body = "- ".$data->object->body." (".$user_name.")<br>- ".iconv('windows-1251', 'utf-8', $sentence)." (T-X)<br>";
-			$mail_subj = iconv("windows-1251", "utf-8", "Сообщение T-X");
+			$mail_subj = iconv("windows-1251", "utf-8", "РЎРѕРѕР±С‰РµРЅРёРµ T-X");
 			mail('your_mail@domain', $mail_subj,  $mail_body, $mail_header);
 			
-			//Возвращаем "ok" серверу Callback API 
+			//Р’РѕР·РІСЂР°С‰Р°РµРј "ok" СЃРµСЂРІРµСЂСѓ Callback API 
 			echo('ok'); 
 			
 			break; 
-		//Разрешение сообщений
+		//Р Р°Р·СЂРµС€РµРЅРёРµ СЃРѕРѕР±С‰РµРЅРёР№
 		case 'message_allow': 
-			//...получаем id его автора 
+			//...РїРѕР»СѓС‡Р°РµРј id РµРіРѕ Р°РІС‚РѕСЂР° 
 			$user_id = $data->object->user_id; 
-			//затем с помощью users.get получаем данные об авторе 
+			//Р·Р°С‚РµРј СЃ РїРѕРјРѕС‰СЊСЋ users.get РїРѕР»СѓС‡Р°РµРј РґР°РЅРЅС‹Рµ РѕР± Р°РІС‚РѕСЂРµ 
 			$user_info = json_decode(file_get_contents("https://api.vk.com/method/users.get?user_ids={$user_id}&v=5.0")); 
 			
-			//и извлекаем из ответа его имя 
+			//Рё РёР·РІР»РµРєР°РµРј РёР· РѕС‚РІРµС‚Р° РµРіРѕ РёРјСЏ 
 			$user_name = $user_info->response[0]->first_name." ".$user_info->response[0]->last_name; 
 			
-			//С помощью messages.send и токена сообщества отпр сообщение 
+			//РЎ РїРѕРјРѕС‰СЊСЋ messages.send Рё С‚РѕРєРµРЅР° СЃРѕРѕР±С‰РµСЃС‚РІР° РѕС‚РїСЂ СЃРѕРѕР±С‰РµРЅРёРµ 
 			$request_params = array( 
-				'message' => iconv("windows-1251", "utf-8", "Привет. Будем чатится, ").$user_info->response[0]->first_name.iconv("windows-1251", "utf-8", "?"), 
+				'message' => iconv("windows-1251", "utf-8", "РџСЂРёРІРµС‚. Р‘СѓРґРµРј С‡Р°С‚РёС‚СЃСЏ, ").$user_info->response[0]->first_name.iconv("windows-1251", "utf-8", "?"), 
 				'user_id' => $user_id, 
 				'access_token' => $token, 
 				'v' => '5.0' 
 			); 			
 			
-			//Сформировать сообщение
+			//РЎС„РѕСЂРјРёСЂРѕРІР°С‚СЊ СЃРѕРѕР±С‰РµРЅРёРµ
 			$get_params = http_build_query($request_params); 
 			
-			//Отправить VK message
+			//РћС‚РїСЂР°РІРёС‚СЊ VK message
 			$r = file_get_contents('https://api.vk.com/method/messages.send?'. $get_params); 
 			
-			//Отправить E-Mail
+			//РћС‚РїСЂР°РІРёС‚СЊ E-Mail
 			$mail_header = "Content-Type: text/html; charset=UTF-8";
-			$mail_subj = iconv("windows-1251", "utf-8", "Разрешение в X");
-			$mail_body = iconv("windows-1251", "utf-8", "Разрешил ").$user_name;
+			$mail_subj = iconv("windows-1251", "utf-8", "Р Р°Р·СЂРµС€РµРЅРёРµ РІ X");
+			$mail_body = iconv("windows-1251", "utf-8", "Р Р°Р·СЂРµС€РёР» ").$user_name;
 			mail('your_mail@domain', $mail_subj,  $mail_body, $mail_header);
 			
-			//Возвращаем "ok" серверу Callback API 
+			//Р’РѕР·РІСЂР°С‰Р°РµРј "ok" СЃРµСЂРІРµСЂСѓ Callback API 
 			echo('ok'); 
 			
 			break; 
-		//Комментарий на стене
+		//РљРѕРјРјРµРЅС‚Р°СЂРёР№ РЅР° СЃС‚РµРЅРµ
 		case 'wall_reply_new': 
 			
-			//...получаем text комментария
+			//...РїРѕР»СѓС‡Р°РµРј text РєРѕРјРјРµРЅС‚Р°СЂРёСЏ
 			$text = $data->object->text; 
 			
-			//С помощью messages.send и токена сообщества отпр сообщение 
+			//РЎ РїРѕРјРѕС‰СЊСЋ messages.send Рё С‚РѕРєРµРЅР° СЃРѕРѕР±С‰РµСЃС‚РІР° РѕС‚РїСЂ СЃРѕРѕР±С‰РµРЅРёРµ 
 			$request_params = array( 
-				'message' => "Новый комментарий на стене X: {$text}", 
+				'message' => "РќРѕРІС‹Р№ РєРѕРјРјРµРЅС‚Р°СЂРёР№ РЅР° СЃС‚РµРЅРµ X: {$text}", 
 				'domain' => "your_id",
 				'access_token' => $token, 
 				'v' => '5.0' 
 			); 
 			
-			//Сформировать сообщение
+			//РЎС„РѕСЂРјРёСЂРѕРІР°С‚СЊ СЃРѕРѕР±С‰РµРЅРёРµ
 			$get_params = http_build_query($request_params); 
 			
-			//Отправить VK message
+			//РћС‚РїСЂР°РІРёС‚СЊ VK message
 			$r = file_get_contents('https://api.vk.com/method/messages.send?'. $get_params); 
 			
-			//Отправить E-Mail
+			//РћС‚РїСЂР°РІРёС‚СЊ E-Mail
 			$mail_header = "Content-Type: text/html; charset=UTF-8";
-			mail('your_mail@domain', 'Комментарий в группе X', "<b>".$text."</b><br><br>Код ответа API:<br>".$r."<br><br>", $mail_header);
+			mail('your_mail@domain', 'РљРѕРјРјРµРЅС‚Р°СЂРёР№ РІ РіСЂСѓРїРїРµ X', "<b>".$text."</b><br><br>РљРѕРґ РѕС‚РІРµС‚Р° API:<br>".$r."<br><br>", $mail_header);
 			
-			//Возвращаем "ok" серверу Callback API 
+			//Р’РѕР·РІСЂР°С‰Р°РµРј "ok" СЃРµСЂРІРµСЂСѓ Callback API 
 			echo('ok'); 
 			
 			break; 
